@@ -22,19 +22,18 @@ class Product < ActiveRecord::Base
         parameters = ActionController::Parameters.new(row.to_hash)
         product = find_by_id(parameters[:'Id']) || new
 
-        if product.exist?
-          Product.update(parameters[:'Id'],
-                        :name => parameters[:'Name'],
+        #if product.exist?
+          product.update(:name => parameters[:'Name'],
                         :released_on => parameters[:'Release Date'],
                         :price => parameters[:'Price'])
 
 
-        else
-          Product.where(:id => parameters[:'Id'],
-                      :name => parameters[:'Name'],
-                      :released_on => parameters[:'Release Date'],
-                      :price => parameters[:'Price']).first_or_create
-        end
+        #else
+        #  Product.where(:id => parameters[:'Id'],
+        #              :name => parameters[:'Name'],
+        #              :released_on => parameters[:'Release Date'],
+        #              :price => parameters[:'Price']).first_or_create
+       # end
 
 
         #=====end of Working version !!! ======================================
