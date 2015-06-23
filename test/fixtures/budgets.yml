@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  acctno: MyString
+  description: MyString
+  annualbudget: 9.99
+  yeartodate: 9.99
+  prioryeartodate: 9.99
+  percentbudgetused: 9.99
+
+two:
+  acctno: MyString
+  description: MyString
+  annualbudget: 9.99
+  yeartodate: 9.99
+  prioryeartodate: 9.99
+  percentbudgetused: 9.99

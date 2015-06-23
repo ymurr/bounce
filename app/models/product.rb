@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
       end
     end
 
-    def self.import(file, product_id)
+    def self.import(file)
       spreadsheet = open_spreadsheet(file)
       header = spreadsheet.row(1)
 
@@ -54,10 +54,10 @@ class Product < ActiveRecord::Base
 
     def self.open_spreadsheet(file)
       case File.extname(file.original_filename)
-        when ".csv" then Roo::CSV.new(file.path, nil, :ignore)
+        when ".csv" then Roo::CSV.new(file.path)
         when ".xls" then Roo::Excel.new(file.path)
-        when ".xlsx" then Roo::Excelx.new(file.path, [nil, :ignore])
-        else raise "Unknown file type: #{file.original_filename}"
+        when ".xlsx" then Roo::Excelx.new(file.path)
+        else raise "File type is not valid for import: #{file.original_filename}"
       end
     end
 

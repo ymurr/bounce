@@ -1,12 +1,12 @@
-<p id="notice"><%= notice %></p>
 
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <p id="notice"><%= notice %></p>
 <h1>Listing Products</h1>
 
-<p>
-  Download:
-  <%= link_to "CSV", products_path(format: "csv") %> |
-  <%= link_to "Excel", products_path(format: "xls") %>
-</p>
 
 <table>
   <thead>
@@ -36,12 +36,32 @@
 
 <h2>Import Products</h2>
 
+
 <%= form_tag import_products_path, multipart: true do %>
     <%= file_field_tag :file %>
-    <%= submit_tag "Import" %>
-<% end %>
+    <%= button_tag "Import", class: "btn btn-primary"%>
+    <% end %>
+
+
+
+<div id="alert" class = "alert-danger"><%= alert %></div>
+
 
 <br/>
 <br/>
 
 <%= link_to 'New Product', new_product_path %>
+
+    <br/>
+    <br/>
+
+    <p>
+      Download:
+      <%= link_to "CSV", products_path(format: "csv") %> |
+      <%= link_to "Excel", products_path(format: "xls") %>
+    </p>
+
+
+
+  </div>
+</div>

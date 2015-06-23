@@ -47,5 +47,9 @@ group :development, :test do
   gem "iconv", "~> 1.0.3"
 
   gem 'roo-xls'
+
+  gem 'bootstrap-sass', '~> 3.3.5'
+
+  gem 'haml', '~> 4.0.6'
 end
 

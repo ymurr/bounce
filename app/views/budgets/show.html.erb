@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+<p>
+  <strong>Account:</strong>
+  <%= @budget.account %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @budget.description %>
+</p>
+
+<p>
+  <strong>Annual budget:</strong>
+  <%= @budget.annual_budget %>
+</p>
+
+<p>
+  <strong>Year tod ate:</strong>
+  <%= @budget.year_to_date %>
+</p>
+
+<p>
+  <strong>Prior year to date:</strong>
+  <%= @budget.prior_year_to_date %>
+</p>
+
+<p>
+  <strong>Percent budget used:</strong>
+  <%= @budget.percent_budget_used %>
+</p>
+
+<%= link_to 'Edit', edit_budget_path(@budget) %> |
+<%= link_to 'Back', budgets_path %>
+
+
+
+  </div>
+</div>

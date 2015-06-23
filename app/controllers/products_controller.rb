@@ -15,8 +15,14 @@ class ProductsController < ApplicationController
   end
 
   def import
-    Product.import(params[:file], params[:product_id])
-    redirect_to root_url, notice: "Products imported."
+    begin
+      Product.import(params[:file])
+      redirect_to root_url, notice: "Products imported."
+    rescue => e
+      flash[:alert] = e.message
+      redirect_to root_url
+    end
+
   end
 
   # GET /products/1

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:o="urn:schemas-microsoft-com:office:office"
+          xmlns:x="urn:schemas-microsoft-com:office:excel"
+          xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+          xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">id</Data></Cell>
+        <Cell><Data ss:Type="String">account</Data></Cell>
+        <Cell><Data ss:Type="String">description</Data></Cell>
+        <Cell><Data ss:Type="String">annual_budget</Data></Cell>
+        <Cell><Data ss:Type="String">year_to_date</Data></Cell>
+        <Cell><Data ss:Type="String">prior_year_to_date</Data></Cell>
+        <Cell><Data ss:Type="String">percent_budget_used</Data></Cell>
+      </Row>
+      <% @budgets.each do |budget| %>
+          <Row>
+            <Cell><Data ss:Type="Number"><%= budget.id %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= budget.account %></Data></Cell>
+            <Cell><Data ss:Type="String"><%= budget.description %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= budget.annual_budget %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= budget.year_to_date  %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= budget.prior_year_to_date  %></Data></Cell>
+            <Cell><Data ss:Type="Number"><%= budget.percent_budget_used  %></Data></Cell>
+          </Row>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

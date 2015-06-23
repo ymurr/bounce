@@ -1,0 +1,19 @@
+!!! 5
+%html
+%head
+  %title Recipe App
+  = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+
+%body
+  %nav.navbar.navbar-default
+    .container
+
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Products", products_path
+        %li= link_to "Budgets", budgets_path
+
+
+
+    = yield
