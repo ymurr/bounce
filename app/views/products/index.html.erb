@@ -34,15 +34,6 @@
 
 <br/>
 
-<h2>Import Products</h2>
-
-
-<%= form_tag import_products_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= button_tag "Import", class: "btn btn-primary"%>
-    <% end %>
-
-
 
 <div id="alert" class = "alert-danger"><%= alert %></div>
 

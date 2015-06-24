@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
 
 
+  resources :product_imports
+
+
   resources :budgets do
     collection { post :import }
   end

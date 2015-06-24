@@ -1,11 +1,13 @@
 class Product < ActiveRecord::Base
 
+    validates_presence_of :price
 
     def self.to_csv(options = {})
+      wanted_column_names = ['id', 'name', 'released_on', 'price']
       CSV.generate(options) do |csv|
-        csv << column_names
+        csv << wanted_column_names
         all.each do |product|
-          csv << product.attributes.values_at(*column_names)
+          csv << product.attributes.values_at(*wanted_column_names)
         end
       end
     end
