@@ -50,13 +50,8 @@ class ProductImport
       parameters = ActionController::Parameters.new(row.to_hash)
       product = Product.find_by_id(parameters[:'id']) || Product.new
 
-      #if product.exist?
-      #product.update(:name => parameters[:'name'],
-      #               :released_on => parameters[:'released_on'],
-      #               :price => parameters[:'price'])
-
       product.attributes = {name: parameters[:'name'], released_on: parameters[:'released_on'], price: parameters[:'price']}
-      product
+
       products_array << product
     end
 
