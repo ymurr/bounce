@@ -1,5 +1,6 @@
 class Budget < ActiveRecord::Base
 
+  validates_presence_of :account, :description, :percent_budget_used
 
 
   def self.to_csv(options = {})
