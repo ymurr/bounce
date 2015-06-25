@@ -29,7 +29,7 @@
         <td><%= budget.annual_budget %></td>
         <td><%= budget.year_to_date %></td>
         <td><%= budget.prior_year_to_date %></td>
-        <td><%= budget.percent_budget_used %></td>
+        <td><%= budget.percent_budget_used * 100%></td>
         <td><%= link_to 'Show', budget %></td>
         <td><%= link_to 'Edit', edit_budget_path(budget) %></td>
         <td><%= link_to 'Destroy', budget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
