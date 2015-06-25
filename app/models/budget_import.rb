@@ -1,4 +1,4 @@
-class ProductImport
+class BudgetImport
   extend ActiveModel::Model
   include ActiveModel::Conversion
   include ActiveModel::Validations
@@ -15,12 +15,12 @@ class ProductImport
 
   def save
     begin
-      if imported_products.map(&:valid?).all?
-        imported_products.each(&:save!)
+      if imported_budgets.map(&:valid?).all?
+        imported_budgets.each(&:save!)
         true
       else
-        imported_products.each_with_index do |product, index|
-          product.errors.full_messages.each do |message|
+        imported_budgets.each_with_index do |budget, index|
+          budget.errors.full_messages.each do |message|
             errors.add :base, "Row #{index+2}: #{message}"
           end
         end
@@ -35,33 +35,34 @@ class ProductImport
 
 
 
-  def imported_products
-      @imported_products ||= load_imported_products
+  def imported_budgets
+      @imported_budgets ||= load_imported_budgets
   end
 
-  def load_imported_products
+  def load_imported_budgets
     spreadsheet = open_spreadsheet
     header = spreadsheet.row(1)
-    products_array = Array.new
+    budgets_array = Array.new
     (2..spreadsheet.last_row).each do |i|
       row = Hash[[header, spreadsheet.row(i)].transpose]
 
 
       parameters = ActionController::Parameters.new(row.to_hash)
-      product = Product.find_by_id(parameters[:'id']) || Product.new
+      budget = Budget.find_by_id(parameters[:'id']) || Budget.new
 
-      #if product.exist?
-      #product.update(:name => parameters[:'name'],
-      #               :released_on => parameters[:'released_on'],
-      #               :price => parameters[:'price'])
+      budget.attributes = {account: parameters[:'account'],
+                    description: parameters[:'description'],
+                    annual_budget: parameters[:'annual_budget'],
+                    year_to_date: parameters[:'year_to_date'],
+                    prior_year_to_date: parameters[:'prior_year_to_date'],
+                    percent_budget_used: parameters[:'percent_budget_used']}
 
-      product.attributes = {name: parameters[:'name'], released_on: parameters[:'released_on'], price: parameters[:'price']}
-      product
-      products_array << product
+      budgets_array << budget
     end
 
-    products_array
+    budgets_array
   end
+
 
 
   def open_spreadsheet
@@ -72,5 +73,6 @@ class ProductImport
       else raise "File type is not valid for import: #{file.original_filename}"
     end
   end
+
 
 end

@@ -41,16 +41,6 @@
 <br>
 
 
-<h2>Import Budgets</h2>
-
-
-<%= form_tag import_budgets_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= button_tag "Import", class: "btn btn-primary"%>
-<% end %>
-
-
-
 <div id="alert" class = "alert-danger" align="center"><%= alert %></div>
 
 
